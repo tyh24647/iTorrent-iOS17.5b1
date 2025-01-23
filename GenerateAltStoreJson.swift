@@ -57,11 +57,6 @@ struct AltStoreAppVersionModel: Codable {
     var minOSVersion: String? = "16.0"
 }
 
-struct AltStorePatreonModel: Codable {
-    var pledge: Double
-    var currency: String?
-}
-
 struct AltStoreAppModel: Codable {
     var name: String = "iTorrent"
     var bundleIdentifier: String = "com.xitrix.iTorrent2"
@@ -108,7 +103,6 @@ struct AltStoreAppModel: Codable {
         .init(type: "background-audio", usageDescription: "Needs to hold app working in background"),
         .init(type: "location", usageDescription: "More robust alternative to hold app working in background which requires additional permission"),
     ]
-    var patreon: AltStorePatreonModel?
     var beta: Bool?
 }
 
@@ -120,7 +114,6 @@ struct AltStoreSourceModel: Codable {
     var iconURL: String? = "\(rootDistrUrl)/sourceIcon.png"
     var headerURL: String? = "\(rootDistrUrl)/sourceIcon.png"
     var website: String? = "https://github.com/XITRIX/iTorrent"
-    var patreonURL: String? = "https://www.patreon.com/xitrix"
     var tintColor: String? = "#F19E69"
     var featuredApps: [String] = ["com.xitrix.iTorrent2"]
     var apps: [AltStoreAppModel]
@@ -184,7 +177,6 @@ enum AltServerGenerator {
                     marketplaceID: withNotarization ? "6499499971" : nil,
                     downloadURL: withNotarization ? notorizationADPUrl : versions.first?.downloadURL ?? "",
                     versions: versions,
-                    patreon: .init(pledge: 2),
                     beta: true
                 ),
             ]
